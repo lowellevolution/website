@@ -1,0 +1,55 @@
+{
+	"name": "lowellevolution",
+	"description": "Lowell Evolution website",
+	"version": "0.1.0",
+	"author": "Peter Martin <pfmartin03@gmail.com>",
+	"dependencies": {
+		"bulma": "^0.7.2",
+		"gatsby": "^2.0.91",
+		"gatsby-image": "^2.0.26",
+		"gatsby-plugin-google-analytics": "^2.0.9",
+		"gatsby-plugin-manifest": "^2.0.13",
+		"gatsby-plugin-offline": "^2.0.21",
+		"gatsby-plugin-react-helmet": "^3.0.0",
+		"gatsby-plugin-sass": "^2.0.7",
+		"gatsby-plugin-sharp": "^2.0.17",
+		"gatsby-plugin-sitemap": "^2.0.4",
+		"gatsby-remark-images": "^3.0.1",
+		"gatsby-remark-responsive-iframe": "^2.0.8",
+		"gatsby-source-contentful": "^2.0.28",
+		"gatsby-source-filesystem": "^2.0.16",
+		"gatsby-transformer-remark": "^2.2.0",
+		"gatsby-transformer-sharp": "^2.1.10",
+		"node-sass": "^4.10.0",
+		"path": "^0.12.7",
+		"prop-types": "^15.6.2",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"react-helmet": "^5.2.0",
+		"react-icons": "^3.3.0",
+		"react-responsive-embed": "^2.1.0",
+		"react-twitter-embed": "^2.0.4",
+		"typeface-aleo": "^0.0.69",
+		"typeface-montserrat": "^0.0.54"
+	},
+	"keywords": [
+		"gatsby",
+		"bulma"
+	],
+	"license": "MIT",
+	"scripts": {
+		"build": "gatsby build",
+		"develop": "gatsby develop",
+		"start": "npm run develop",
+		"format": "prettier --write \"src/**/*.js\"",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"deploy": "gatsby build && gh-pages -d dist"
+	},
+	"devDependencies": {
+		"prettier": "^1.14.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/amandeepmittal/gatsby-bulma-quickstart"
+	}
+}

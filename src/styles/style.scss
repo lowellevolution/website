@@ -1,0 +1,28 @@
+// Importing variables
+@import './variables.scss';
+
+// Importing Bulma from node_modules
+@import '~bulma/bulma.sass';
+
+.title {
+	// font-family: $family-serif;
+	font-weight: 900;
+}
+
+.is-narrow {
+	max-width: 780px;
+}
+
+.reverse-row-order {
+  flex-direction: row-reverse;
+}
+
+.entry-title {
+	@include from($desktop) {
+		margin-top: 6rem;
+	}
+}
+
+.gatsby-resp-iframe-wrapper {
+	margin-bottom: 1.5rem;
+}

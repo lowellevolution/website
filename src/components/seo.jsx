@@ -14,6 +14,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
           <Helmet
             htmlAttributes={{
               lang,
+              class: 'has-navbar-fixed-top',
             }}
             title={title}
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}

@@ -1,6 +1,8 @@
 import React from 'react';
 import ResponsiveEmbed from 'react-responsive-embed';
 import { graphql } from 'gatsby';
+import { FaCheckSquare as Signup } from 'react-icons/fa';
+
 
 import Layout from '../templates/layout';
 import Newsfeed from '../components/newsfeed';
@@ -35,7 +37,7 @@ const IndexPage = ({ data }) => {
               <h1 className="title is-2">We have Lowell pride, and we're going to fight for a smarter, stronger city.</h1>
             </div>
             <div>
-              <button type="button" className="button is-large is-primary">Join Us</button>
+              <button type="button" className="button is-outlined is-large is-info"><span style={{marginRight: '5px'}} className="icon is-small"><Signup/></span>Join Us</button>
             </div>
           </div>
         </div>

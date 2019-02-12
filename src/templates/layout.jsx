@@ -21,7 +21,7 @@ const Layout = ({ children }) => (
 	<div>
 		<SEO />
 		<Header />
-		<div className=" thorax" style={{minHeight: '80vh', paddingTop: '4rem'}}>
+		<div className=" thorax" style={{minHeight: '80vh'}}>
 
 			{children}
 		</div>

@@ -10,7 +10,7 @@ export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { title, subtitle, body, createdAt } = data.contentfulPost;
-  const content = body.childMarkdownRemark.html;
+  const content = (body) ? body.childMarkdownRemark.html : '';
   return (
     <Layout>
       <SEO title={title} />

@@ -1,4 +1,6 @@
-require('dotenv').config();
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
 	siteMetadata: {
 		title: 'Lowell Evolution',
@@ -48,13 +50,13 @@ module.exports = {
 			}
 		},
 		{
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: '6ybd6wpmyxhc',
-        // Learn about environment variables: https://gatsby.app/env-vars
-        accessToken: '9a21c4ceccfd2540c3bd6450b3481bb08d756c8853286ec61bcfe40a9cf894c0',
-      },
-    },
+			resolve: `gatsby-source-contentful`,
+			options: {
+				spaceId: '6ybd6wpmyxhc',
+				// Learn about environment variables: https://gatsby.app/env-vars
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+			},
+		},
 		`gatsby-plugin-sitemap`,
 		{
 			resolve: `gatsby-transformer-remark`,

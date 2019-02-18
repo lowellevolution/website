@@ -18,6 +18,7 @@
 		"gatsby-remark-responsive-iframe": "^2.0.8",
 		"gatsby-source-contentful": "^2.0.28",
 		"gatsby-source-filesystem": "^2.0.16",
+		"gatsby-source-pinboard": "^0.1.4",
 		"gatsby-transformer-remark": "^2.2.0",
 		"gatsby-transformer-sharp": "^2.1.10",
 		"node-sass": "^4.10.0",

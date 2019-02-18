@@ -1208,6 +1208,7 @@ aws4@^1.8.0:
 axios@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
   dependencies:
     follow-redirects "^1.3.0"
     is-buffer "^1.1.5"
@@ -4722,6 +4723,13 @@ gatsby-source-filesystem@^2.0.16:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
+gatsby-source-pinboard@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/gatsby-source-pinboard/-/gatsby-source-pinboard-0.1.4.tgz#0082371ee16bb8a7cfca60a6154e26085d32c8eb"
+  integrity sha512-11p95PSRGTBxRiev+w5aVTEs9FeNmnrtj/z6zVlfyRxBMr7zfC8eg8ht9mHDwa8f2EBBfkscKbemyqxxhA0kYg==
+  dependencies:
+    node-fetch "^2.2.0"
+
 gatsby-transformer-remark@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.2.2.tgz#77895029d479464de16d914d19946eb6fc4a2ad9"
@@ -7205,6 +7213,11 @@ node-fetch@^1.0.1:
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
+
+node-fetch@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
+  integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
 
 node-forge@0.7.5:
   version "0.7.5"

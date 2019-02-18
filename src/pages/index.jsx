@@ -7,10 +7,13 @@ import Layout from '../templates/layout';
 import Newsfeed from '../components/newsfeed';
 // import Timeline from '../components/timeline';
 import SEO from '../components/seo';
+import ReadingList from '../components/readinglist';
 
 const IndexPage = ({ data }) => {
   console.log(data);
   const contentful = data.posts.edges;
+  const pinboard = data.readinglist.edges;
+
   const posts = contentful.map(({ node }) => {
     return {
       id: node.id,
@@ -20,6 +23,18 @@ const IndexPage = ({ data }) => {
       // excerpt: node.frontmatter.description || node.excerpt,
     };
   });
+
+  const readinglist = pinboard.map(({ node }) => {
+    return {
+      id: node.id,
+      href: node.href,
+      description: node.description,
+      date: node.time,
+    };
+  });
+
+  console.log(readinglist);
+
   return (
     <Layout>
       <SEO
@@ -28,39 +43,42 @@ const IndexPage = ({ data }) => {
         description="Something"
       />
 
-      <div className="hero is-light is-medium">
+      <div className="hero is-light ">
         <div className="hero-body">
-          <div className="container is-fluid">
+          <div className="container">
             <div
               className=" is-size-3 has-text-grey-dark"
               style={{ maxWidth: '1000px', marginBottom: '3rem' }}
             >
-              <p>Build thriving neighborhoods.</p>
-              <p>Invest in public education.</p>
-              <p>Focus on what makes us unique.</p>
-              <h1 className="title is-2">
-                We have Lowell pride, and we're going to fight for a smarter,
-                stronger city.
-              </h1>
-            </div>
-            <div>
-              <button
-                type="button"
-                className="button is-outlined is-large is-info"
-              >
-                <span style={{ marginRight: '5px' }} className="icon is-small">
-                  <Signup />
-                </span>
-                Join Us
-              </button>
+              <p>Promote thriving walkable neighborhoods.</p>
+              <p>Invest in innovative public education.</p>
+              <p>Build on top of what makes Lowell unique.</p>
+              <h1 className="title is-2">Move Lowell forward.</h1>
             </div>
           </div>
         </div>
       </div>
       <div className="container">
+        <section className="section lede">
+          <p>
+            We're proud of Lowell. We love its history, we're active
+            participants in present debates, and we care deeply about where
+            Lowell is going. We believe that citizens can and should be
+            enthusiastic partners in how Lowell grows and evolves. Will you join
+            us?
+          </p>
+        </section>
         <section className="section">
-          <h2 className="title is-2">Latest Updates</h2>
-          <Newsfeed posts={posts} />
+          <div className="columns is-8">
+            <div className="column">
+              <h2 className="title is-2">Latest Updates</h2>
+              <Newsfeed posts={posts} />
+            </div>
+
+            <div className="column is-one-third">
+              <ReadingList posts={readinglist} />
+            </div>
+          </div>
         </section>
       </div>
     </Layout>
@@ -76,6 +94,17 @@ export const query = graphql`
           title
           slug
           createdAt
+        }
+      }
+    }
+    readinglist: allPinboardBookmark(limit: 10) {
+      edges {
+        node {
+          id
+          href
+          description
+          time
+          tags
         }
       }
     }

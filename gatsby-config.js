@@ -1,12 +1,13 @@
 require("dotenv").config({
 	path: `.env.${process.env.NODE_ENV}`,
 });
+const contentfulHost = (process.env.NODE_ENV === 'development') ? 'preview.contentful.com' : 'cdn.contentful.com';
 module.exports = {
 	siteMetadata: {
 		title: 'Lowell Evolution',
 		author: 'Peter Martin',
 		imageUrl: `${__dirname}/images/lhsmockupjan2019.jpg`,
-		description: 'Building a stronger, smarter Lowell.',
+		description: 'Advocating for a stronger, smarter Lowell.',
 		keywords: `Lowell, city, campaign, politics, policy`,
 		twitter: 'https://twitter.com/lowellevolution',
 		facebook: 'https://facebook.com/lowellevolution',
@@ -23,6 +24,13 @@ module.exports = {
 			options: {
 				name: `images`,
 				path: `${__dirname}/src/images`
+			}
+		},
+		{
+			resolve: "gatsby-source-pinboard",
+			options: {
+				authToken: process.env.PINBOARD_TOKEN, // required authentication token
+				tags: 'lowellevolution' // optional tag to filter links
 			}
 		},
 		'gatsby-transformer-sharp',
@@ -55,6 +63,7 @@ module.exports = {
 				spaceId: '6ybd6wpmyxhc',
 				// Learn about environment variables: https://gatsby.app/env-vars
 				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+				host: contentfulHost,
 			},
 		},
 		`gatsby-plugin-sitemap`,

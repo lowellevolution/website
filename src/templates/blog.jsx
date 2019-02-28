@@ -6,12 +6,16 @@ import moment from 'moment';
 import Layout from './layout';
 import SEO from '../components/seo';
 import Author from '../components/author';
+import Hero from '../components/hero';
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { title, subtitle, body, createdAt, authors } = data.contentfulPost;
+  const { title, subtitle, body, createdAt, authors, excerpt, featuredImage } = data.contentfulPost;
   const content = body ? body.childMarkdownRemark.html : '';
+  const description = excerpt ? excerpt.excerpt : '';
+  console.log(body.childMarkdownRemark.tableOfContents);
+  const backgroundImage = featuredImage ? featuredImage.fluid.src : undefined;
   const authorBios = (authors && authors.length)
     ? authors.map(author => (
         <Author
@@ -26,17 +30,9 @@ export default function Template({
   console.log(authors);
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} description={description} />
       <article className="hentry post ">
-        <header className="hero is-light">
-          <div className="container ">
-            <div className="hero-body" style={{ maxWidth: '900px' }}>
-              <h1 className="title">{title}</h1>
-              {subtitle && <p className="subtitle ">{subtitle}</p>}
-            </div>
-          </div>
-        </header>
-
+        <Hero title={title} subtitle={subtitle} backgroundImg={backgroundImage}/>
         <div className="container section">
           <p className="is-uppercase" >
             <small>Published {moment(createdAt).fromNow()}</small>
@@ -76,6 +72,18 @@ export const pageQuery = graphql`
       body {
         childMarkdownRemark {
           html
+          tableOfContents(pathToSlugField: "slug")
+        }
+      }
+      excerpt {
+        excerpt
+      }
+      featuredImage {
+        id
+        fluid(maxWidth: 1920) {
+          sizes
+          src
+          srcSet
         }
       }
       authors {

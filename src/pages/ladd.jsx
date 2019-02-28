@@ -1,0 +1,46 @@
+import React from 'react';
+import { graphql } from 'gatsby';
+// import ReactCompareImage from 'react-compare-image';
+import ReactCompareImage from 'react-compare-image';
+
+import Layout from '../templates/layout';
+import SEO from '../components/seo';
+
+const Ladd = ({data}) => {
+  const rightImage = data.rightImage.childImageSharp.original.src;
+  const leftImage = data.leftImage.childImageSharp.original.src;
+
+  console.log(rightImage);
+  return (
+    <>
+    <Layout>
+      <SEO title="testing" description="testing" />
+      <div className="container">
+        <ReactCompareImage leftImage={leftImage} rightImage={rightImage} />;
+        {/* <ReactCompareImage leftImage="/images/current.png" rightImage="/images/new.png" /> */}
+      </div>
+    </Layout>
+    </>
+  );
+};
+
+export const query = graphql`
+  query {
+    rightImage: file(relativePath: { eq: "new.png" }) {
+    	childImageSharp {
+        original {
+          src
+        }
+    	}
+    }
+    leftImage: file(relativePath: { eq: "old.png" }) {
+    	childImageSharp {
+        original {
+          src
+        }
+    	}
+    }
+  }
+`
+
+export default Ladd;

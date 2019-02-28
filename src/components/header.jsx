@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import logo from '../images/logo-white.svg';
+import logo from '../images/logo.svg';
 import { FaTwitter, FaFacebook } from 'react-icons/fa';
 
 class Header extends React.Component {
@@ -15,7 +15,7 @@ class Header extends React.Component {
     const { navActive } = this.state;
     return (
       <nav
-        className="navbar is-info is-fixed-top"
+        className="navbar  is-fixed-top"
         role="navigation"
         aria-label="main navigation"
         // style={{ borderBottom: '1px solid #efefef' }}

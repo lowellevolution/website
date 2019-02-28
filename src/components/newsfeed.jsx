@@ -14,10 +14,13 @@ const Newsfeed = ({ posts }) => {
         <h2 className="title is-3">
           <Link to={`/blog/${post.slug}`}>{post.title}</Link>
         </h2>
-        {/* <p>{post.excerpt}</p> */}
-        <time datetime={moment(post.date).format()} className="is-6 is-subtle">
-          {moment(post.date).fromNow()}
-        </time>
+
+        <p className="is-6 subtitle is-subtle">
+          <time datetime={moment(post.date).format()}>
+            {moment(post.date).fromNow()}
+          </time>
+        </p>
+        {post.excerpt && <p>{post.excerpt}</p>}
       </div>
       <div className="column is-one-third">
         <div

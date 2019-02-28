@@ -10,7 +10,6 @@ import SEO from '../components/seo';
 import ReadingList from '../components/readinglist';
 
 const IndexPage = ({ data }) => {
-  console.log(data);
   const contentful = data.posts.edges;
   const pinboard = data.readinglist.edges;
 
@@ -19,8 +18,8 @@ const IndexPage = ({ data }) => {
       id: node.id,
       title: node.title,
       slug: node.slug,
-      date: node.createdAt,
-      // excerpt: node.frontmatter.description || node.excerpt,
+      date: node.publishDate,
+      excerpt: node.excerpt ? node.excerpt.excerpt : undefined,
     };
   });
 
@@ -33,8 +32,6 @@ const IndexPage = ({ data }) => {
     };
   });
 
-  console.log(readinglist);
-
   return (
     <Layout>
       <SEO
@@ -43,11 +40,11 @@ const IndexPage = ({ data }) => {
         description="Something"
       />
 
-      <div className="hero is-light ">
+      <div className="hero is-info is-bold">
         <div className="hero-body">
           <div className="container">
             <div
-              className=" is-size-3 has-text-grey-dark"
+              className=" is-size-3 "
               style={{ maxWidth: '1000px', marginBottom: '3rem' }}
             >
               <p>Promote thriving walkable neighborhoods.</p>
@@ -58,16 +55,20 @@ const IndexPage = ({ data }) => {
           </div>
         </div>
       </div>
+      <div className=" has-background-light">
+        <div className="container">
+          <section className="section lede">
+            <p>
+              We're proud of Lowell. We love its history, we're active
+              participants in public discussions, and we care deeply about where
+              Lowell is going. We believe that citizens can and should be
+              enthusiastic partners in how Lowell grows and evolves. Will you
+              join us?
+            </p>
+          </section>
+        </div>
+      </div>
       <div className="container">
-        <section className="section lede">
-          <p>
-            We're proud of Lowell. We love its history, we're active
-            participants in present debates, and we care deeply about where
-            Lowell is going. We believe that citizens can and should be
-            enthusiastic partners in how Lowell grows and evolves. Will you join
-            us?
-          </p>
-        </section>
         <section className="section">
           <div className="columns is-8">
             <div className="column">
@@ -87,17 +88,26 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    posts: allContentfulPost(filter: { node_locale: { eq: "en-US" } }) {
+    posts: allContentfulPost(
+      sort: { fields: publishDate, order: DESC }
+      filter: { node_locale: { eq: "en-US" } }
+    ) {
       edges {
         node {
           id
           title
           slug
-          createdAt
+          excerpt {
+            excerpt
+          }
+          publishDate
         }
       }
     }
-    readinglist: allPinboardBookmark(limit: 10) {
+    readinglist: allPinboardBookmark(
+      limit: 10
+      sort: { fields: time, order: DESC }
+    ) {
       edges {
         node {
           id

@@ -32,3 +32,9 @@
 .gatsby-resp-iframe-wrapper {
 	margin-bottom: 1.5rem;
 }
+
+.header {
+	background: -moz-linear-gradient(left, $blue 0%, $cyan 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, $blue 0%, $cyan 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, $blue 0%, $cyan 100%)!important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}

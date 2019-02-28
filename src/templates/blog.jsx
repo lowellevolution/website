@@ -14,7 +14,6 @@ export default function Template({
   const { title, subtitle, body, createdAt, authors, excerpt, featuredImage } = data.contentfulPost;
   const content = body ? body.childMarkdownRemark.html : '';
   const description = excerpt ? excerpt.excerpt : '';
-  console.log(body.childMarkdownRemark.tableOfContents);
   const backgroundImage = featuredImage ? featuredImage.fluid.src : undefined;
   const authorBios = (authors && authors.length)
     ? authors.map(author => (
@@ -72,7 +71,6 @@ export const pageQuery = graphql`
       body {
         childMarkdownRemark {
           html
-          tableOfContents(pathToSlugField: "slug")
         }
       }
       excerpt {
